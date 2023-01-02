@@ -1,0 +1,21 @@
+<nav>
+  <ul class="topmenu">
+    {% for item in menu_items %}
+      <li><a class="menu_item" href="{% url 'page' item.id %}">{{ item.title }}<span class="fa fa-angle-down"></span></a>
+          <ul class="submenu">
+            {% for child_item in item.child_items.all %}
+            <li><a href="{% url 'page' child_item.id %}">{{ child_item.title }}<span class="fa fa-angle-down"></span></a>
+              {% if child_item.child_items.all %}
+                <ul class="submenu">
+                  {% for i in child_item.child_items.all %}
+                    <li><a href="{% url 'page' i.id %}">{{ i.title }}<span class="fa fa-angle-down"></span></a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
