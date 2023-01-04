@@ -15,4 +15,17 @@
 	{% block page_content %}
 	{% endblock page_content %}
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	    var current = location.pathname;
+	    $('.menu_item').each(function(){
+	        var $this = $(this);
+	        // if the current path is like this link, make it active
+	        if($this.attr('href').indexOf(current) !== -1){
+	            $this.addClass('active');
+	        }
+	    })
+	})
+</script>
 </html>
